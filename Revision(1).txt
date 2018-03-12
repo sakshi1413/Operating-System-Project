@@ -1,0 +1,16 @@
+int main()
+{
+   static float TotalTurnaroundTime,TotalWaitingTime;
+  int x=0,n,Time,pending,TimeSlice1,TimeSlice2;
+
+  int i,y,z=0;
+  int max,l;
+  printf("Please Enter the no: of process:\t \n");
+  scanf("%d",&n);
+  for(i=0;i<n;i++)
+  {
+    printf("Please Enter ArrivalTime and BurstTime for Process P[%d]  :\n",i+1);
+    scanf("%d",&r[i].arrivaltime);
+    scanf("%d",&r[i].bursttime);
+    r[i].runtime=r[i].bursttime;
+  }
