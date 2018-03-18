@@ -1,0 +1,51 @@
+#include<stdio.h>	
+ #include<unistd.h>
+ struct rr
+{
+	int waitingtime;
+	int turnaroundtime;
+	int arrivaltime;
+	int bursttime;
+	int runtime;
+	int t;
+}r[100];
+
+int main()
+{
+   static float TotalTurnaroundTime,TotalWaitingTime;
+  int x=0,n,Time,pending,TimeSlice1,TimeSlice2;
+
+  int i,y,z=0;
+  int max,l;
+  printf("Please Enter the no: of process:\t \n");
+  scanf("%d",&n);
+  for(i=0;i<n;i++)
+  {
+    printf("Please Enter ArrivalTime and BurstTime for Process P[%d]  :\n",i+1);
+    scanf("%d",&r[i].arrivaltime);
+    scanf("%d",&r[i].bursttime);
+    r[i].runtime=r[i].bursttime;
+  }
+  Time=r[0].arrivaltime;
+TimeSlice1=6;
+printf("ITTERATION 1\n\n");
+ 	for(i=0;i<n;i++){
+		if(r[i].arrivaltime<=Time && r[i].runtime!=0)
+		{
+			printf("The following process P[%d] is running presently\n",i+1);
+			r[i].runtime -=TimeSlice1;
+			Time+=TimeSlice1;			
+				
+		
+			if(r[i].runtime<=0)
+			{
+				printf("The following process P[%d] is finished during the first itteration \n",i+1);
+				r[i].t=Time;
+				r[i].runtime=0;
+		r[i].turnaroundtime=Time-r[i].bursttime;
+				r[i].waitingtime=r[i].turnaroundtime-r[i].arrivaltime;
+			
+			}
+
+		}
+	}
